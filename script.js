@@ -1,3 +1,4 @@
+// Andmetüübid
 let person = {
     name: "Kaarel",
     age: 20
