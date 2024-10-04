@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Javascriptimine</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>Hello World!</h1>
@@ -12,8 +13,25 @@
         <p id="promptResult">0</p>
         <hr>
         <button type="button" id="beginPrompt">Uus tehe...</button>        
+        <hr>
+        <h1 style="text-align: center;">Numbri generaator</h1>
+        <div style="margin: auto; width: fit-content;">
+            <h3 id="rngresult" style="text-align: center;">0</h3>
+            <form style="width: 256px; display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <label for="rngmin">Miinimum</label>
+                    <input type="number" id="rngmin">
+                </div>
+                <div>
+                    <label for="rngmax">Maksimum</label>
+                    <input type="number" id="rngmax">
+                </div>
+                <button type="button" id="rngbutton">Genereeri number</button>
+            </form>
+        </div>
     </body>
     <footer>
         <script src="script.js"></script>
+        <script src="math_func.js"></script>
     </footer>
 </html>

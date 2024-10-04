@@ -11,7 +11,43 @@ trunc -> eemaldab komakohad
 //let rand = Math.random(); // [0-1)
 //let rand = Math.random() * 6; // [0-6)
 
-let min = 0;
-let max = 6;
-let result = Math.floor(Math.random() * (max - min)) + 1;
-console.log(result);
+function random(min, max) {
+    return Math.round(Math.random() * (max - min)) + min;
+}
+
+const rngButton = document.querySelector("#rngbutton");
+const rngResult = document.querySelector("#rngresult");
+rngButton.addEventListener("click", () => {
+    var min = parseInt(document.querySelector("#rngmin").value);
+    var max = parseInt(document.querySelector("#rngmax").value);
+
+    var result = random(min, max);
+    rngResult.textContent = result;
+
+    rngResult.classList.remove("spin");
+    void rngResult.offsetWidth;
+    rngResult.classList.add("spin");
+});
+
+// 3 === sama väärtus ning andmetüüp
+// 2 == sama väärtus
+
+// ülesanne: sisestatud on number või string (kontrollida)
+// põhikool 7-16, gümn 17-20, täis 20+
+
+let age = 50;
+
+if (isNaN(age)) { // Saaks ka parseFloat kasutada kuid võib tekitada probleeme
+    if (age >= 7 && age < 17) { // [7; 17)
+        console.log("Lähed sööma kell 11.");
+    }
+    else if (age >= 17 && age < 20) { // [17; 20)
+        console.log("Lähed sööma kell 14.");
+    }
+    else { // [20; inf)
+        console.log("Lähed sööma peale tööpäeva. Nüüd ruttu-ruttu tagasi tööle!");
+    }
+}
+else {
+    console.log("Esitati vanus, mis ei ole number.");
+}

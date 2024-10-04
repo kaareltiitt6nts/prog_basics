@@ -1,0 +1,24 @@
+@keyframes spinKeys {
+    from {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+body {
+    background-color: aliceblue;
+}
+
+#rngbutton {
+    padding: 1rem;
+}
+
+.spin {
+    animation-name: spinKeys;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
