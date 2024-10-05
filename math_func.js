@@ -37,7 +37,7 @@ rngButton.addEventListener("click", () => {
 
 let age = 50;
 
-if (isNaN(age)) { // Saaks ka parseFloat kasutada kuid võib tekitada probleeme
+if (!isNaN(age)) {
     if (age >= 7 && age < 17) { // [7; 17)
         console.log("Lähed sööma kell 11.");
     }
