@@ -35,7 +35,7 @@ rngButton.addEventListener("click", () => {
 // ülesanne: sisestatud on number või string (kontrollida)
 // põhikool 7-16, gümn 17-20, täis 20+
 
-let age = 50;
+let age = prompt("Vanus?");
 
 if (!isNaN(age)) {
     if (age >= 7 && age < 17) { // [7; 17)
