@@ -35,19 +35,47 @@ rngButton.addEventListener("click", () => {
 // ülesanne: sisestatud on number või string (kontrollida)
 // põhikool 7-16, gümn 17-20, täis 20+
 
-let age = prompt("Vanus?");
+// let age = prompt("Vanus?");
 
-if (!isNaN(age)) {
-    if (age >= 7 && age < 17) { // [7; 17)
-        console.log("Lähed sööma kell 11.");
-    }
-    else if (age >= 17 && age < 20) { // [17; 20)
-        console.log("Lähed sööma kell 14.");
-    }
-    else { // [20; inf)
-        console.log("Lähed sööma peale tööpäeva. Nüüd ruttu-ruttu tagasi tööle!");
+// if (!isNaN(age)) {
+//     if (age >= 7 && age < 17) { // [7; 17)
+//         console.log("Lähed sööma kell 11.");
+//     }
+//     else if (age >= 17 && age < 20) { // [17; 20)
+//         console.log("Lähed sööma kell 14.");
+//     }
+//     else { // [20; inf)
+//         console.log("Lähed sööma peale tööpäeva. Nüüd ruttu-ruttu tagasi tööle!");
+//     }
+// }
+// else {
+//     console.log("Esitati vanus, mis ei ole number.");
+// }
+
+function calc(a, b, type) {
+    switch(type) {
+        case("a"):
+            return result = a + b;
+        case("s"):
+            return result = a - b;
+        case("m"):
+            return result = a * b;
+        case("d"):
+            return result = a / b;
+        case("e"):
+            return result = Math.pow(a, b);
+        case("r"):
+            return result = a % b;
+        default:
+            return result = null;
     }
 }
-else {
-    console.log("Esitati vanus, mis ei ole number.");
+
+let a = parseFloat(prompt("a?"));
+let b = parseFloat(prompt("b?"));
+let type = prompt("milline tehe? [a/s/m/d/e/r]")
+
+if (!isNaN(a) && !isNaN(b)) {
+    let result = calc(a, b, type);
+    console.log(result);
 }
