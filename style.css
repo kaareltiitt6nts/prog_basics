@@ -18,7 +18,7 @@ body {
 
 .spin {
     animation-name: spinKeys;
-    animation-duration: 1s;
+    animation-duration: 0.25s;
     animation-timing-function: ease-out;
 }
 
