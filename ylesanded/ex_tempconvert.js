@@ -38,9 +38,12 @@ do{
         let from = prompt("Millisest süsteemist? [C/F/K]").toUpperCase()
         let to = prompt("Millisesse süsteemi? [C/F/K]").toUpperCase()
 
-        if (from === "" || to === "") break;
-        
-        result = convertTemperature(temp, from, to)
+        if (from != "" && to != "") {
+            result = convertTemperature(temp, from, to)
+        }
+        else {
+            console.log("invalid from/to")
+        }
     }
 }
 while(isNaN(result))
