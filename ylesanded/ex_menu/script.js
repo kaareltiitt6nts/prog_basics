@@ -106,6 +106,7 @@ function createMenuItem(parent, element, data) {
     name.innerHTML = data.name
     price.innerHTML = data.price
 
+    // fragment k2itub imelikult
     if (data.available === false) {
         name.classList.add("unavailable")
         price.classList.add("unavailable")

@@ -5,8 +5,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <script src="script.js"></script>
+        <style>
+            ul, #userList {
+                list-style-type: none;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            li, #userElement {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+        <template id="userTemplate">
+            <li id="userElement">
+                <span id="userName">name</span> <span id="isAdult">isadult</span>
+            </li>
+        </template>
     </head>
     <body>
-        
+        <div id="userListContainer" style="width: 250px; background-color: aquamarine; padding: 10px;">
+            <ul id="userList">
+                
+            </ul>
+        </div>
     </body>
 </html>
