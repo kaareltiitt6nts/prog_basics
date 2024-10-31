@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js"></script>
+    <style>
+        h1 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        #price {
+            font-weight: bold;
+        }
+
+        #price::after {
+            content: " €";
+        }
+
+        div ul li {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .unavailable {
+            text-decoration: line-through;
+        }
+    </style>
     <template id="menuitem_template">
-        <li id="menuitem">
-            <span id="name"></span> | Hind: <span id="price"></span>
+        <li id="menuitem" style="width: 100%;">
+            <span id="name"></span><span id="price"></span>
         </li>
     </template>
 </head>
 <body>
-    <div style="width: fit-content; background-color: beige;" id="menuList">
+    <div style="min-width: 300px; width: fit-content; background-color: beige; padding: 15px; border: 2px solid black;" id="menuList">
         <h1>Eelroad</h1>
         <ul id="menustarter">
             

@@ -1,9 +1,8 @@
-// hinnad võetud keskmisest tallinna burgeriputkast, eurodes
 const FOOD_MENU = [
     {
         name: "Friikartulid",
         price: 12,
-        category: "starter"
+        category: "starter",
     },
     {
         name: "Friikartulid viineriga (1)",
@@ -11,8 +10,13 @@ const FOOD_MENU = [
         category: "starter"
     },
     {
-        name: "Friikartulid viineriga (3)",
+        name: "Friikartulid viineritega (3)",
         price: 21,
+        category: "starter"
+    },
+    {
+        name: "Caesari salat",
+        price: 52,
         category: "starter"
     },
     {
@@ -93,6 +97,23 @@ function filterByKeyValue(key, value) {
 }
 console.log(filterByKeyValue("category", "dessert"))
 
+function createMenuItem(parent, element, data) {
+    let item = document.importNode(element, true)
+
+    let name = item.querySelector("#name")
+    let price = item.querySelector("#price")
+
+    name.innerHTML = data.name
+    price.innerHTML = data.price
+
+    if (data.available === false) {
+        name.classList.add("unavailable")
+        price.classList.add("unavailable")
+    }
+
+    parent.appendChild(item)
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const MENU_ITEM_TEMPLATE = document.querySelector("#menuitem_template").content
     const MENU_STARTER = document.querySelector("#menustarter")
@@ -100,14 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const MENU_DESSERT = document.querySelector("#menudessert")
 
     const ITEMS_STARTER = filterByKeyValue("category", "starter")
+    const ITEMS_MAIN = filterByKeyValue("category", "main")
+    const ITEMS_DESSERT = filterByKeyValue("category", "dessert")
+
     ITEMS_STARTER.forEach(item => {
-        const ITEM = MENU_STARTER.appendChild(document.importNode(MENU_ITEM_TEMPLATE, true))
+        createMenuItem(MENU_STARTER, MENU_ITEM_TEMPLATE, item)
+    });
 
-        let name = ITEM.querySelector("#name")
-        let price = ITEM.querySelector("#price")
+    ITEMS_MAIN.forEach(item => {
+        createMenuItem(MENU_MAIN, MENU_ITEM_TEMPLATE, item)
+    });
 
-        name.innerHTML = item.name
-        price.innerHTML = item.price
+    ITEMS_DESSERT.forEach(item => {
+        createMenuItem(MENU_DESSERT, MENU_ITEM_TEMPLATE, item)
     });
 })
 
