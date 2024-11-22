@@ -26,6 +26,15 @@ export class Cart {
         }
     }
 
+    updateProductAmount(id, amountToAdd) {
+        let result = this.findProduct(id)
+        if (result) {
+            result.amount += amountToAdd
+        }
+
+        return result
+    }
+
     removeProduct(productId) {
         this.items = this.items.filter(el => {
             return el.product.id !== productId

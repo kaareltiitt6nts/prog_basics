@@ -1,5 +1,6 @@
 export class Order {
-    constructor(cart) {
+    constructor(id, cart) {
+        this.id = id
         this.orderDate = new Date()
         this.cart = cart
     }
