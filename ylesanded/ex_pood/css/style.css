@@ -1,0 +1,20 @@
+nav {
+    margin: 0px;
+    padding: 0px;
+    height: 4rem;
+    background-color: #d6eedb;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
+
+#navlist {
+    padding: 0px;
+    list-style: none;
+    float: right;
+}
+
+#navitem {
+
+}

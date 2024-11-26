@@ -1,7 +1,7 @@
-import { Product } from "./scripts/product.js"
-import { Cart } from "./scripts/cart.js"
-import { Order } from "./scripts/order.js"
-import { Customer } from "./scripts/customer.js"
+import { Product } from "./product.js"
+import { Cart } from "./cart.js"
+import { Order } from "./order.js"
+import { Customer } from "./customer.js"
 
 let cart = new Cart()
 
