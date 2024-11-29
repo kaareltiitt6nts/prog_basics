@@ -1,16 +1,24 @@
-import { Product } from "./product.js"
-import { Cart } from "./cart.js"
-import { Order } from "./order.js"
-import { Customer } from "./customer.js"
+// classes
+import { Product } from "./constructors/product.js"
+import { Cart } from "./constructors/cart.js"
+import { Order } from "./constructors/order.js"
+import { Customer } from "./constructors/customer.js"
+
+// views
+import { displayProducts } from "./views/products.js"
+import { displayCart } from "./views/cart.js"
+
+document.title = "E-Pood"
+
+const products = [
+    new Product(0, "Õun", 0.7, "Puuvili"),
+    new Product(1, "Mandariin", 3, "Puuvili"),
+    new Product(2, "Banaan", 2, "Puuvili")
+]
 
 let cart = new Cart()
+cart.addProduct(products[0], 4)
+cart.addProduct(products[1], 3)
+cart.addProduct(products[2], 2)
 
-cart.addProduct(new Product(1, "apple", 10, "puuvili"), 5)
-cart.addProduct(new Product(2, "pear", 2, "puuvili"), 5)
-
-let order = new Order(1, cart)
-order.printOrder()
-
-let customer = new Customer("Joosep")
-customer.placeOrder(order)
-customer.printOrderHistory()
+displayProducts(products)
