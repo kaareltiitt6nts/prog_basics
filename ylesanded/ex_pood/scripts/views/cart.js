@@ -6,7 +6,7 @@ function createCartItem(product, amount) {
         <h2>${product.name}</h2>
         <div>
             <p>Kogus: ${amount}</p>
-            <p>Hind: ${product.price * amount}</p>
+            <p>Hind: ${(product.price * amount).toFixed(2)}</p>
         </div>
     `
 
@@ -19,15 +19,21 @@ export function displayCart(cart) {
 
     const cartContainer = document.createElement("div")
     cartContainer.id = "cartContainer"
-    cartContainer.innerHTML = "<h1>Ostukäru</h1>"
+    cartContainer.innerHTML = 
+    `
+        <h1>Ostukäru</h1>
+        <div id="productsView"></div>
+        <h2 id="totalPrice"></h2>
+    `
 
-    const cartView = document.createElement("div")
-    cartView.id = "productsView"
+    const cartView = cartContainer.querySelector("#productsView")
+    const totalPrice = cartContainer.querySelector("#totalPrice")
+
+    totalPrice.innerHTML = `Koguhind: ${cart.getTotalPrice().toFixed(2)}`
 
     mainContainer.append(cartContainer)
-    cartContainer.append.cartView
 
     cart.items.forEach(item => {
-        cartContainer.append(createCartItem(item.product, item.amount))     
+        cartView.append(createCartItem(item.product, item.amount))     
     });
 }

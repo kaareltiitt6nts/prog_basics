@@ -8,17 +8,20 @@ import { Customer } from "./constructors/customer.js"
 import { displayProducts } from "./views/products.js"
 import { displayCart } from "./views/cart.js"
 
+// router
+import { navigateTo } from "./router.js"
+import { createNavButtons } from "./nav.js"
+
 document.title = "E-Pood"
 
-const products = [
+export let products = [
     new Product(0, "Õun", 0.7, "Puuvili"),
     new Product(1, "Mandariin", 3, "Puuvili"),
-    new Product(2, "Banaan", 2, "Puuvili")
+    new Product(2, "Banaan", 2, "Puuvili"),
+    new Product(3, "Manraan", 10, "Puuvili")
 ]
 
-let cart = new Cart()
-cart.addProduct(products[0], 4)
-cart.addProduct(products[1], 3)
-cart.addProduct(products[2], 2)
+export let cart = new Cart()
 
+createNavButtons()
 displayProducts(products)
