@@ -1,5 +1,6 @@
 body {
     background-color: #d7eedc;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 nav {
@@ -12,6 +13,9 @@ nav {
     top: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
 
 p {
@@ -47,6 +51,10 @@ a {
     color: white;
 }
 
+#mainContainer {
+    margin-top: 1rem;
+}
+
 #productCard {
     display: flex;
     align-items: center;
@@ -70,11 +78,27 @@ a {
 #cartItem {
     background-color: #f7f7f7;
     padding: 1rem;
-    width: 100%;
     margin: 0.25rem;
     display: flex;
     align-items: center;
     gap: 4rem;
     border-radius: 10px;
     box-shadow: 5px 5px 5px #00000025;
+}
+
+#cartView {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+#submitPurchase {
+    padding: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;    
+}
+
+#shopName {
+    font-weight: bold;
+    font-size: x-large;
 }

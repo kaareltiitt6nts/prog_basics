@@ -1,3 +1,5 @@
+import { setNavCartItemCount } from "../nav.js"
+
 export class Cart {
     constructor() {
         this.items = []
@@ -24,6 +26,8 @@ export class Cart {
         else {
             result.amount += amount
         }
+
+        setNavCartItemCount(cart.totalItems)
     }
 
     updateProductAmount(id, amountToAdd) {
@@ -35,10 +39,21 @@ export class Cart {
         return result
     }
 
+    setProductAmount(id, amount) {
+        let result = this.findProduct(id)
+        if (result) {
+            result.amount = amount
+        }
+
+        return result
+    }
+
     removeProduct(productId) {
         this.items = this.items.filter(el => {
             return el.product.id !== productId
         })
+
+        setNavCartItemCount(cart.totalItems)
     }
 
     getTotalPrice() {
@@ -47,3 +62,5 @@ export class Cart {
         }, 0)
     }
 }
+
+export const cart = new Cart()

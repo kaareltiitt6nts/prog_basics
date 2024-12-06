@@ -24,3 +24,10 @@ export class Product {
         return product.price * discountPercent/100
     }
 }
+
+export const products = [
+    new Product(0, "Õun", 0.7, "Puuvili"),
+    new Product(1, "Mandariin", 3, "Puuvili"),
+    new Product(2, "Banaan", 2, "Puuvili"),
+    new Product(3, "Manaan", 10, "Puuvili")
+]

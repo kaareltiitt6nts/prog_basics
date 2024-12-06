@@ -1,27 +1,24 @@
 // classes
-import { Product } from "./constructors/product.js"
-import { Cart } from "./constructors/cart.js"
+import { Product, products } from "./constructors/product.js"
+import { Cart, cart } from "./constructors/cart.js"
 import { Order } from "./constructors/order.js"
-import { Customer } from "./constructors/customer.js"
+import { Customer, customer } from "./constructors/customer.js"
 
 // views
 import { displayProducts } from "./views/products.js"
-import { displayCart } from "./views/cart.js"
 
 // router
-import { navigateTo } from "./router.js"
 import { createNavButtons } from "./nav.js"
+import { navigateTo } from "./router.js"
+import { getViewData } from "./localstorage.js"
 
 document.title = "E-Pood"
 
-export let products = [
-    new Product(0, "Õun", 0.7, "Puuvili"),
-    new Product(1, "Mandariin", 3, "Puuvili"),
-    new Product(2, "Banaan", 2, "Puuvili"),
-    new Product(3, "Manraan", 10, "Puuvili")
-]
+const init = async () => {
+    createNavButtons()
+    displayProducts(products)
 
-export let cart = new Cart()
+    document.querySelector("#shopName").onclick = () => navigateTo("products", products)
+}
 
-createNavButtons()
-displayProducts(products)
+init()
