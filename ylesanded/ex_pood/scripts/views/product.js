@@ -14,13 +14,15 @@ export function displayProduct(product) {
     productView.id = "productView"
     productView.innerHTML = `
         <h1>${product.name}</h1>
-        <h1>Hind: ${product.price}</h1>
-        <h1>Kategooria: ${product.category}</h1>
-        <button id="favButton">Lisa lemmikuks</button>
-        <form id="addToCart">
-            <input type="number" id="amount" value="1" min="1">
-            <input type="submit" value="Lisa korvi">
-        </form>
+        <div id="productDetailView">
+            <p>Hind: ${product.price}</p>
+            <p>Kategooria: ${product.category}</p>
+            <button id="favButton">Lisa lemmikuks</button>
+            <form id="addToCart">
+                <input type="number" id="amount" value="1" min="1">
+                <input type="submit" value="Lisa korvi">
+            </form>
+        </div>
     `
 
     const favButton = productView.querySelector("#favButton")

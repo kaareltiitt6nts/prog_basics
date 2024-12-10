@@ -1,4 +1,22 @@
 import { navigateTo } from "../router.js"
+import { getFormattedPrice } from "../util.js"
+
+export function createProductCard(product) {
+    let productCard = document.createElement("div")
+    productCard.id = "productCard"
+
+    productCard.innerHTML = `
+        <h1>${product.name}</h1>
+        <p>Hind: ${getFormattedPrice(product.price)}</p>
+        <p>Kategooria: ${product.category}</p>
+    `
+
+    productCard.addEventListener("click", () => {
+        navigateTo("product", product)
+    })
+
+    return productCard
+}
 
 export function displayProducts(products) {
     const mainContainer = document.querySelector("#mainContainer")
@@ -15,19 +33,6 @@ export function displayProducts(products) {
     productsContainer.append(productsView)
 
     products.forEach(product => {
-        let productCard = document.createElement("div")
-        productCard.id = "productCard"
-
-        productCard.innerHTML = `
-            <h1>${product.name}</h1>
-            <p>Hind: ${product.price}</p>
-            <p>Kategooria: ${product.category}</p>
-        `
-
-        productCard.addEventListener("click", () => {
-            navigateTo("product", product)
-        })
-
-        productsView.append(productCard)
+        productsView.append(createProductCard(product))
     });
 }

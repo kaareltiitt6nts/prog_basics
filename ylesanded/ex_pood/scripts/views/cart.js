@@ -1,8 +1,7 @@
 import { cart } from "../constructors/cart.js"
 import { customer } from "../constructors/customer.js"
 import { Order } from "../constructors/order.js"
-import { setNavCartItemCount } from "../nav.js"
-import { navigateTo } from "../router.js"
+import { calculateVatTotalPrice, calculateVat, getFormattedPrice } from "../util.js"
 
 function createCartItem(product, amount) {
     let element = document.createElement("div")
@@ -11,23 +10,37 @@ function createCartItem(product, amount) {
     element.innerHTML = `
         <h2>${product.name}</h2>
         <div>
-            <input id="amountInput" type="number" min=1 step=1 value=${amount}>
-            <p>Hind: ${(product.price * amount).toFixed(2)}</p>
+            <div>
+                <input id="amount">${amount}</input>
+                <button id="addButton">+</button>
+                <button id="removeButton">-</button>
+            </div>
+            <p>Hind: ${getFormattedPrice(product.price * amount)}</p>
         </div>
         <button id="removeFromCart">Eemalda</button>
     `
 
-    // halb!!!
     const removeFromCart = element.querySelector("#removeFromCart")
-    const amountInput = element.querySelector("#amountInput")
+    const addButton = element.querySelector("#addButton")
+    const removeButton = element.querySelector("#removeButton")
+
     removeFromCart.onclick = () => {
         cart.removeProduct(product.id)
         displayCart(cart)
     }
 
-    // halb!!!
-    amountInput.onclick = () => {
-        cart.setProductAmount(product.id, amountInput.value)
+    addButton.onclick = () => {
+        cart.updateProductAmount(product.id, 1)
+        displayCart(cart)
+    }
+
+    removeButton.onclick = () => {
+        const result = cart.updateProductAmount(product.id, -1)
+
+        if (result.amount === 0) {
+            cart.removeProduct(product.id)
+        }
+
         displayCart(cart)
     }
 
@@ -44,15 +57,20 @@ export function displayCart(cart) {
     `
         <h1>Ostukorv</h1>
         <div id="cartView"></div>
+        <h2 id="vat"></h2>
         <h2 id="totalPrice"></h2>
         <button id="submitPurchase">Soorita ost</button>
     `
 
     const cartView = cartContainer.querySelector("#cartView")
+    const vat = cartContainer.querySelector("#vat")
     const totalPrice = cartContainer.querySelector("#totalPrice")
     const submitPurchase = cartContainer.querySelector("#submitPurchase")
 
-    totalPrice.innerHTML = `Koguhind: ${cart.getTotalPrice().toFixed(2)}`
+    const price = cart.getTotalPrice()
+
+    vat.innerHTML = `Käibemaks: ${getFormattedPrice(calculateVat(price))}`
+    totalPrice.innerHTML = `Koguhind: ${getFormattedPrice(calculateVatTotalPrice(price))}`
 
     cart.items.forEach(item => {
         cartView.append(createCartItem(item.product, item.amount))     
@@ -61,7 +79,7 @@ export function displayCart(cart) {
     submitPurchase.onclick = () => {
         if (cart.totalItems > 0) {
             //alert("Ost sooritatud!")
-            Order.create(customer, 0, cart) // tee id
+            customer.placeOrder(new Order(0, cart)) // tee id
         }
         else {
             //alert("Ostukorv on tühi!")

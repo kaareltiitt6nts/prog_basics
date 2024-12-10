@@ -14,10 +14,4 @@ export class Order {
         
         console.log(this.cart.getTotalPrice())
     }
-
-    static create(customer, id, cart) {
-        const newOrder = new Order(id, cart)
-        customer.orderHistory.push(newOrder)
-        return newOrder
-    }
 }

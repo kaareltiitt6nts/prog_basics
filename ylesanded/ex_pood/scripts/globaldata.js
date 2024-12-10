@@ -1,0 +1,1 @@
+export const VAT = 24 // käibemaksu %

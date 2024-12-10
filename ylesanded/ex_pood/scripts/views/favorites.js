@@ -1,5 +1,5 @@
-import { navigateTo } from "../router.js"
 import { findProductById } from "../util.js"
+import { createProductCard } from "./products.js"
 
 export function displayFavorites(favorites) {
     const mainContainer = document.querySelector("#mainContainer")
@@ -10,27 +10,12 @@ export function displayFavorites(favorites) {
     favContainer.innerHTML = "<h1>Lemmikud</h1>"
 
     const favView = document.createElement("div")
-    favView.id = "favView"
+    favView.id = "productsView"
 
     mainContainer.append(favContainer)
     favContainer.append(favView)
 
     favorites.forEach(productId => {
-        let product = findProductById(productId)
-
-        let productCard = document.createElement("div")
-        productCard.id = "productCard"
-
-        productCard.innerHTML = `
-            <h1>${product.name}</h1>
-            <p>Hind: ${product.price}</p>
-            <p>Kategooria: ${product.category}</p>
-        `
-
-        productCard.addEventListener("click", () => {
-            navigateTo("product", product)
-        })
-
-        favView.append(productCard)
+        favView.append(createProductCard(findProductById(productId)))
     });
 }
