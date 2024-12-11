@@ -1,3 +1,5 @@
+import { PRODUCT_CATEGORIES } from "../globaldata.js"
+
 export class Product {
     constructor(id, name, price, category, discount = 0) {
         this.id = id
@@ -17,8 +19,8 @@ export class Product {
 }
 
 export const products = [
-    new Product(0, "Õun", 0.7, "Puuvili", 0),
-    new Product(1, "Mandariin", 3, "Puuvili", 0),
-    new Product(2, "Banaan", 2, "Puuvili", 0),
-    new Product(3, "Manaan", 10, "Puuvili", 50)
+    new Product(0, "Õun", 0.7, PRODUCT_CATEGORIES["fruits"], 0),
+    new Product(1, "Mandariin", 3, PRODUCT_CATEGORIES["fruits"], 0),
+    new Product(2, "Banaan", 2, PRODUCT_CATEGORIES["fruits"], 0),
+    new Product(3, "Manaan", 10, PRODUCT_CATEGORIES["fruits"], 50)
 ]
