@@ -1,3 +1,4 @@
+import { PRODUCT_CATEGORIES } from "../globaldata.js"
 import { navigateTo } from "../router.js"
 import { getFormattedPrice } from "../util.js"
 
@@ -5,10 +6,15 @@ export function createProductCard(product) {
     let productCard = document.createElement("div")
     productCard.id = "productCard"
 
+    const isDiscounted = product.discount > 0
+    const priceHtml = isDiscounted ?
+      `<span class="oldPrice">${getFormattedPrice(product.price)}</span> <span class="salePrice">${getFormattedPrice(product.finalPrice)}</span>`
+    : `${getFormattedPrice(product.finalPrice)}`
+
     productCard.innerHTML = `
         <h1>${product.name}</h1>
-        <p>Hind: ${getFormattedPrice(product.price)}</p>
-        <p>Kategooria: ${product.category}</p>
+        <p id="price">${priceHtml}</p>
+        <p>${PRODUCT_CATEGORIES[product.category]}</p>
     `
 
     productCard.addEventListener("click", () => {

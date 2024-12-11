@@ -1,4 +1,4 @@
-import { cart } from "../constructors/cart.js"
+import { Cart, cart } from "../constructors/cart.js"
 import { customer } from "../constructors/customer.js"
 import { Order } from "../constructors/order.js"
 import { calculateVatTotalPrice, calculateVat, getFormattedPrice } from "../util.js"
@@ -10,12 +10,14 @@ function createCartItem(product, amount) {
     element.innerHTML = `
         <h2>${product.name}</h2>
         <div>
-            <div>
-                <input id="amount">${amount}</input>
-                <button id="addButton">+</button>
-                <button id="removeButton">-</button>
+            <div id="cartAmount">
+                <span id="amount">${amount}</span>
+                <div>
+                    <button id="addButton">+</button>
+                    <button id="removeButton">-</button>
+                </div>
             </div>
-            <p>Hind: ${getFormattedPrice(product.price * amount)}</p>
+            <p>Hind: ${getFormattedPrice(product.finalPrice * amount)}</p>
         </div>
         <button id="removeFromCart">Eemalda</button>
     `
@@ -78,11 +80,13 @@ export function displayCart(cart) {
 
     submitPurchase.onclick = () => {
         if (cart.totalItems > 0) {
-            //alert("Ost sooritatud!")
+            alert("Ost sooritatud!")
             customer.placeOrder(new Order(0, cart)) // tee id
+            customer.cart = new Cart()
+            displayCart(customer.cart)
         }
         else {
-            //alert("Ostukorv on tühi!")
+            alert("Ostukorv on tühi!")
         }
     }
 

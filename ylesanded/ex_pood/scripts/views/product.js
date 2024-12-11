@@ -1,6 +1,7 @@
 import { cart } from "../constructors/cart.js"
-import { setNavCartItemCount } from "../nav.js"
 import { customer } from "../constructors/customer.js"
+import { PRODUCT_CATEGORIES } from "../globaldata.js"
+import { getFormattedPrice } from "../util.js"
 
 export function displayProduct(product) {
     const mainContainer = document.querySelector("#mainContainer")
@@ -15,8 +16,8 @@ export function displayProduct(product) {
     productView.innerHTML = `
         <h1>${product.name}</h1>
         <div id="productDetailView">
-            <p>Hind: ${product.price}</p>
-            <p>Kategooria: ${product.category}</p>
+            <p>Hind: ${getFormattedPrice(product.finalPrice)}</p>
+            <p>${PRODUCT_CATEGORIES[product.category]}</p>
             <button id="favButton">Lisa lemmikuks</button>
             <form id="addToCart">
                 <input type="number" id="amount" value="1" min="1">

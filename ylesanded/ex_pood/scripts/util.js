@@ -15,6 +15,6 @@ export function calculateVatTotalPrice(totalPrice) {
 
 export function getFormattedPrice(price) {
     if (!isNaN(price)) {
-        return price.toFixed(2)
+        return price.toFixed(2) + "€"
     }
 }

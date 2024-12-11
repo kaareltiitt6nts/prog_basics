@@ -6,7 +6,7 @@ body {
 
 #mainContainer {
     padding: 0.5rem;
-} 
+}
 
 nav {
     margin: 0;
@@ -64,7 +64,7 @@ a {
     width: 12rem;
     height: 8rem;
     background-color: bisque;
-    padding: 1rem;
+    padding: 1.25rem;
     border: 2px solid black;
     flex-shrink: 0;
     cursor: pointer;
@@ -75,6 +75,13 @@ a {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 0.5rem;
+}
+
+#cartAmount {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5rem;
 }
 
 #cartItem {
@@ -107,4 +114,13 @@ a {
 
 #cartProductName {
     width: 1rem;
+}
+
+
+.oldPrice {
+    text-decoration: line-through;
+}
+
+.salePrice {
+    color: red
 }
