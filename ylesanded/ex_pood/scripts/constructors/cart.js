@@ -58,7 +58,7 @@ export class Cart {
 
     getTotalPrice() {
         return this.items.reduce((acc, item) => {
-           return acc + (item.product.price * item.amount)
+           return acc + (item.product.finalPrice * item.amount)
         }, 0)
     }
 
