@@ -1,3 +1,4 @@
+import { customer } from "../constructors/customer.js"
 import { PRODUCT_CATEGORIES } from "../globaldata.js"
 import { navigateTo } from "../router.js"
 import { getFormattedPrice } from "../util.js"
@@ -15,7 +16,25 @@ export function createProductCard(product) {
         <h1>${product.name}</h1>
         <p id="price">${priceHtml}</p>
         <p>${PRODUCT_CATEGORIES[product.category]}</p>
+        <button id="favButton">Lisa lemmikuks</button>
     `
+
+    const favButton = productCard.querySelector("#favButton")
+    if (customer.hasFavorite(product)) {
+        favButton.innerHTML = "Eemalda lemmikutest"
+    }
+
+    favButton.onclick = (event) => {
+        if (!customer.hasFavorite(product)) {
+            favButton.innerHTML = "Eemalda lemmikutest"
+        }
+        else {
+            favButton.innerHTML = "Lisa lemmikuks"
+        }
+
+        event.stopPropagation()
+        customer.toggleFavorite(product)
+    }
 
     productCard.addEventListener("click", () => {
         navigateTo("product", product)

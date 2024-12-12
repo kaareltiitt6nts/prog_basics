@@ -59,24 +59,32 @@ export function displayCart(cart) {
     `
         <h1>Ostukorv</h1>
         <div id="cartView"></div>
-        <h2 id="vat"></h2>
         <h2 id="totalPrice"></h2>
+        <h2 id="vat"></h2>
+        <h2 id="totalPriceVat"></h2>
         <button id="submitPurchase">Soorita ost</button>
     `
 
     const cartView = cartContainer.querySelector("#cartView")
-    const vat = cartContainer.querySelector("#vat")
     const totalPrice = cartContainer.querySelector("#totalPrice")
+    const vat = cartContainer.querySelector("#vat")
+    const totalPriceVat = cartContainer.querySelector("#totalPriceVat")
     const submitPurchase = cartContainer.querySelector("#submitPurchase")
 
     const price = cart.getTotalPrice()
 
+    totalPrice.innerHTML = `Koguhind: ${getFormattedPrice(price)}`
     vat.innerHTML = `Käibemaks: ${getFormattedPrice(calculateVat(price))}`
-    totalPrice.innerHTML = `Koguhind: ${getFormattedPrice(calculateVatTotalPrice(price))}`
+    totalPriceVat.innerHTML = `Koguhind + km: ${getFormattedPrice(calculateVatTotalPrice(price))}`
 
-    cart.items.forEach(item => {
-        cartView.append(createCartItem(item.product, item.amount))     
-    });
+    if (cart.items.length === 0) {
+        cartView.innerHTML = `<p>Ostukorv on tühi!</p>`
+    }
+    else { 
+        cart.items.forEach(item => {
+            cartView.append(createCartItem(item.product, item.amount))     
+        });
+    }
 
     submitPurchase.onclick = () => {
         if (cart.totalItems > 0) {

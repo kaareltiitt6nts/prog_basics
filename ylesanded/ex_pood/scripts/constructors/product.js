@@ -21,8 +21,8 @@ export const products = [
     new Product(1, "Mandariin", 2.99, "fruits", 0),
     new Product(2, "Banaan", 1.99, "fruits", 0),
     new Product(3, "Manaan", 9.99, "fruits", 20),
-    new Product(3, "Sülearvuti", 349.99, "electronics", 0),
-    new Product(3, "Telefon", 159.95, "electronics", 0),
-    new Product(3, "Tahvelarvuti", 249.95, "electronics", 20),
-    new Product(3, "Kõrvaklapid", 65.95, "electronics", 20)
+    new Product(4, "Sülearvuti", 349.99, "electronics", 0),
+    new Product(5, "Telefon", 159.95, "electronics", 0),
+    new Product(6, "Tahvelarvuti", 249.95, "electronics", 20),
+    new Product(7, "Kõrvaklapid", 65.95, "electronics", 20)
 ]
