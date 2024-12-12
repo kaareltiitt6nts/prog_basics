@@ -1,6 +1,6 @@
 import { cart } from "../constructors/cart.js"
 import { customer } from "../constructors/customer.js"
-import { PRODUCT_CATEGORIES } from "../globaldata.js"
+import { PRODUCT_CATEGORIES } from "../util.js"
 import { getFormattedPrice } from "../util.js"
 
 export function displayProduct(product) {

@@ -15,14 +15,3 @@ export class Product {
         return this.price - this.price * this.discount/100
     }
 }
-
-export const products = [
-    new Product(0, "Õun", 0.75, "fruits", 0),
-    new Product(1, "Mandariin", 2.99, "fruits", 0),
-    new Product(2, "Banaan", 1.99, "fruits", 0),
-    new Product(3, "Manaan", 9.99, "fruits", 20),
-    new Product(4, "Sülearvuti", 349.99, "electronics", 0),
-    new Product(5, "Telefon", 159.95, "electronics", 0),
-    new Product(6, "Tahvelarvuti", 249.95, "electronics", 20),
-    new Product(7, "Kõrvaklapid", 65.95, "electronics", 20)
-]

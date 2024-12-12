@@ -1,8 +1,8 @@
-import { products } from "./constructors/product.js"
-import { VAT } from "./globaldata.js"
+export const VAT = 24 // käibemaksu %
 
-export function findProductById(productId) {
-    return products.find(product => product.id == productId)
+export const PRODUCT_CATEGORIES = { // kategooriate tõlked (jsoni?)
+    fruits: "Puuviljad",
+    electronics: "Elektroonika"
 }
 
 export function calculateVat(totalPrice) {

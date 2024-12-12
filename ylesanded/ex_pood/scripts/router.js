@@ -1,4 +1,3 @@
-import { saveViewData } from "./localstorage.js";
 import { displayCart } from "./views/cart.js";
 import { displayFavorites } from "./views/favorites.js";
 import { displayProduct } from "./views/product.js";
@@ -13,7 +12,6 @@ export function navigateTo(view, params) {
     }
 
     if (views[view]) {
-        saveViewData(view, params)
         views[view]()
     }
 }

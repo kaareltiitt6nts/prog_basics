@@ -1,4 +1,4 @@
-import { setNavFavItemCount } from "../nav.js"
+import { setNavFavItemCount } from "../main.js"
 
 export class Customer {
     constructor(id, name) {
@@ -9,18 +9,15 @@ export class Customer {
     }
 
     hasFavorite(product) {
-        return this.favorites.includes(product.id)
+        return this.favorites.find(item => item.id === product.id)
     }
 
     toggleFavorite(product) {
         if (!this.hasFavorite(product)) {
-            this.favorites.push(product.id)
+            this.favorites.push(product)
         }
         else {
-            const existsIndex = this.favorites.indexOf(product.id)
-            if (existsIndex > -1) {
-                this.favorites.splice(existsIndex, 1)
-            }
+            this.favorites = this.favorites.filter(item => item.id !== product.id)
         }
 
         setNavFavItemCount(this.favorites.length)

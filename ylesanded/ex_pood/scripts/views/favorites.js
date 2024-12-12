@@ -1,4 +1,3 @@
-import { findProductById } from "../util.js"
 import { createProductCard } from "./products.js"
 
 export function displayFavorites(favorites) {
@@ -15,7 +14,12 @@ export function displayFavorites(favorites) {
     mainContainer.append(favContainer)
     favContainer.append(favView)
 
-    favorites.forEach(productId => {
-        favView.append(createProductCard(findProductById(productId)))
-    });
-}
+    if (favorites.length === 0) {
+        favView.innerHTML = "Te pole ühtegi lemmikut toodet lisanud."
+    }
+    else {
+        favorites.forEach(product => {
+            favView.append(createProductCard(product))
+        });
+    }
+}    

@@ -1,5 +1,5 @@
 import { customer } from "../constructors/customer.js"
-import { PRODUCT_CATEGORIES } from "../globaldata.js"
+import { PRODUCT_CATEGORIES } from "../util.js"
 import { navigateTo } from "../router.js"
 import { getFormattedPrice } from "../util.js"
 
